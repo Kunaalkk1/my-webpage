@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@1,300&display=swap');
+
+body {
+  font-family: "Arvo", serif;
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #343a40;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+#main-section {
+  flex-grow: 1;
+  margin-left: 250px; /* Adjust based on the sidebar width */
+  padding-left: 20px;
+  padding-right: 200px;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+  font-weight: 600;
+}
+
+.sidebar-header img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  color: white;
+  margin: 0 5px;
+  transition: color 0.2s;
+}
+
+.social-icons a:hover {
+  color: #bb86fc;
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.nav-link {
+  color: white;
+  padding: 10px;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  background-color: #495057;
+}
+
+.nav-item i {
+  margin-right: 10px;
+}
+
+.sidebar-footer {
+  text-align: center;
+}
+
+.main-content {
+  margin-left: 300px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  padding-right: 30px;
+}
+
+.header {
+  background:url("background.jpeg") no-repeat center center/cover;
+  color: black;
+  text-shadow:
+  1px 1px 0 silver,
+  -1px 1px 0 silver,
+  -1px -1px 0 silver,
+  1px -1px 0 silver;
+  text-align: center;
+  padding-top: 300px;
+  height: 568px;
+}
+
+.header .display-4 {
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.timeline, .education-timeline, .project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline-item, .education-item, .project-item {
+  margin-bottom: 30px;
+}
+
+.footer {
+  padding: 20px 0;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .footer,
+body.dark-mode #sidebar {
+  background-color: #333333;
+}
+
+body.dark-mode a {
+  color: #bb86fc;
+}
+
+body.dark-mode .btn-outline-light {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body.dark-mode .card{
+  margin-bottom: 1rem;
+  background: none;
+  border: none;
+}
+
+body.dark-mode .card-body{
+  background: #121212;
+  border-radius: 0.5rem;
+  padding: 20px;
+  box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+}
+
+.card {
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.card-body {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 20px;
+  box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .card1{
+  margin-bottom: 1rem;
+  background: none;
+  border: none;
+}
+
+body.dark-mode .card-body1{
+  background: #57575d;
+  border-radius: 0.5rem;
+  padding: 20px;
+  box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+}
+
+.card1 {
+  margin-bottom: 1rem;
+  border: none;
+}
+
+.card-body1 {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 20px;
+  box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+}
+
+/* Hide sidebar and show toggle button on small screens */
+@media (max-width: 767.98px) {
+
+  body {
+    margin: 0px;
+    overflow-x: hidden;
+  }
+  
+  #sidebar {
+    display: none;
+  }
+  
+  #main-section {
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+  }
+
+  #sidebar.active {
+    display: block;
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #343a40;
+    z-index: 1000;
+  }
+
+  .header {
+    padding-top: 20px;  /* Adjust padding for smaller screens */
+    height: auto;       /* Allow height to adjust based on content */
+    text-align: center;
+  }
+}
+
+/* Position the toggle button */
+#sidebarToggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1100;
+}
+
+.typing-container {
+  display: flex;
+  align-items: center;
+}
+
+.cursor {
+  margin-left: 5px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
