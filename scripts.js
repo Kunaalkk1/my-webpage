@@ -28,12 +28,12 @@ $(document).ready(function () {
     });
   }
 
-  animateSection('#experience', 'animate__fadeInUp');
-  animateSection('#education', 'animate__fadeInUp');
-  animateSection('#skills', 'animate__fadeInUp');
-  animateSection('#extracurriculars', 'animate__fadeInUp');
-  animateSection('#references', 'animate__fadeInUp');
-  animateSection('#projects', 'animate__fadeInUp');
+  // animateSection('#experience', 'animate__fadeInUp');
+  // animateSection('#education', 'animate__fadeInUp');
+  // animateSection('#skills', 'animate__fadeInUp');
+  // animateSection('#extracurriculars', 'animate__fadeInUp');
+  // animateSection('#references', 'animate__fadeInUp');
+  // animateSection('#projects', 'animate__fadeInUp');
 });
 
 $('#sidebarToggle').on('click', function () {
