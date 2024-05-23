@@ -13,7 +13,7 @@ $(document).ready(function () {
   }
 
   // Scroll animation
-  function animateSection(section, animationName) {
+  /*function animateSection(section, animationName) {
     $(window).on('scroll', function () {
       var sectionTop = $(section).offset().top;
       var sectionBottom = sectionTop + $(section).outerHeight();
@@ -26,7 +26,7 @@ $(document).ready(function () {
         $(section).removeClass('animate__animated ' + animationName);
       }
     });
-  }
+  }*/
 
   // animateSection('#experience', 'animate__fadeInUp');
   // animateSection('#education', 'animate__fadeInUp');
