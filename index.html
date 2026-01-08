@@ -1,346 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kunaal Kiran Kumar</title>
+  <title>Kunaal Kiran Kumar | Portfolio</title>
   <link rel="icon" type="image/x-icon" href="image.jpeg">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="dark-mode">
-  <div id="sidebar">
-    <div class="sidebar-header">
-      <h2>Hi, I'm Kunaal!</h2>
-      <img src="image.jpeg" alt="Kunaal Kiran Kumar" class="img-fluid rounded-circle mb-3">
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/kunaal-kiran-kumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Kunaalkk1" target="_blank"><i class="fab fa-github"></i></a>
-      </div>
-      <i id="darkModeToggle" class="fas fa-sun toggle-icon"></i>
-    </div>
-    <div class="sidebar-footer">
-      <ul style="text-align: left; list-style-type: none; padding: 0;">
-        <li>Email: <a href="mailto:kunaalkk1@gmail.com">kunaalkk1@gmail.com</a></li>
-        <li>Address: Bangalore, India</li>
-      </ul>
-    </div>
-    <nav class="nav flex-column">
-      <a class="nav-link" href=""><i class="fas fa-home"></i>&nbsp;&nbsp; Home</a>
-      <a class="nav-link" href="#experience"><i class="fas fa-briefcase"></i>&nbsp;&nbsp; Experience</a>
-      <a class="nav-link" href="#education"><i class="fas fa-graduation-cap"></i>&nbsp;&nbsp; Education</a>
-      <a class="nav-link" href="#skills"><i class="fas fa-cogs"></i>&nbsp;&nbsp; Skills</a>
-      <a class="nav-link" href="#extracurriculars"><i class="fas fa-users"></i>&nbsp;&nbsp; Extra-Curriculars</a>
-      <a class="nav-link" href="#references"><i class="fas fa-user-friends"></i>&nbsp;&nbsp; References</a>
-      <a class="nav-link" href="#projects"><i class="fas fa-project-diagram"></i>&nbsp;&nbsp; Projects</a>
-    </nav>
-  </div>
-  <section id="main-section" class="container-fluid">
-    <button id="sidebarToggle" class="btn btn-primary d-md-none">
-      <i class="fas fa-bars"></i>
-    </button>
-  <!-- Main Content -->
-  <div id="main-content" class="container-fluid" style = "padding-left: 20px; padding-right: 40px">
-    <header class="header full-screen animate__animated animate__fadeIn">
-      <div class="header-content">
-        <h1 class="display-4">Kunaal Kiran Kumar</h1>
-          <div class="typing-container" style="font-size: 35px; justify-content: center;">
-            <strong> I'm a <span id="typing-text" style="color: rgb(95, 34, 152);"></span></strong>
-            <span class="cursor">|</span>
-        </div>
-      </div>
-    </header>
 
+<body class="dark-mode">
+  <div id="cursor"></div>
+  <div id="cursor-blur"></div>
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="glass-nav">
+    <div class="nav-brand">Hi, I'm Kunaal!</div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#extracurriculars" class="nav-link">Activities</a></li>
+      <li><a href="#references" class="nav-link">References</a></li>
+    </ul>
+    <div class="nav-extras">
+      <button id="theme-toggle" class="icon-btn"><i class="fas fa-sun"></i></button>
+      <button id="mobile-menu-btn" class="icon-btn mobile-only"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu">
+    <button id="close-menu-btn"><i class="fas fa-times"></i></button>
+    <ul class="mobile-nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#extracurriculars">Activities</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero-section">
+
+
+    <!-- Fallback/Overlay -->
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <div class="profile-frame tilt-element">
+        <img src="background.jpeg" alt="Kunaal Kiran Kumar" class="profile-img">
+      </div>
+      <h1 class="glitch-text" data-text="Kunaal Kiran Kumar">Kunaal Kiran Kumar</h1>
+      <div class="typing-wrapper">
+        <span id="typing-prefix">I'm a </span>
+        <span id="typing-text"></span>
+        <span class="cursor-blink">|</span>
+      </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/kunaal-kiran-kumar/" target="_blank" class="social-btn"><i
+            class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/Kunaalkk1" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="mailto:kunaalkk1@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+    </div>
+    <a href="#experience" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+  </header>
+
+  <main class="container">
     <!-- Experience Section -->
-    <section id="experience" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-          <!-- Job 4 -->
-          <div class="card animate__animated animate__fadeInUp">
-            <div class="card-body">
-              <div class="timeline-item animate__animated animate__fadeInRight">
-                <h3>Embedded Systems Lead - Firmware</h3>
-                <h5>Flomobility Pvt Ltd (June 2024 - Present)</h5>
-                <p><strong>Responsibilities:</strong></p>
-                <ul>
-                  <li>Firmware Architecture & Design</li>
-                  <li>Electronics Integration</li>
-                </ul>
-              </div>
+    <section id="experience" class="section">
+      <h2 class="section-heading"><span class="highlight">Ex</span>perience</h2>
+      <div class="timeline">
+
+        <!-- Job 4 -->
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="job-header">
+              <h3>Embedded Systems Lead - Firmware</h3>
+              <span class="company">Flomobility Pvt Ltd</span>
+              <span class="date">June 2024 - Present</span>
+            </div>
+            <div class="job-body">
+              <p><strong>Responsibilities:</strong></p>
+              <ul>
+                <li>Firmware Architecture & Design</li>
+                <li>Electronics Integration</li>
+              </ul>
             </div>
           </div>
-          <!-- Job 3 -->
-          <div class="card animate__animated animate__fadeInUp">
-            <div class="card-body">
-              <div class="timeline-item animate__animated animate__fadeInLeft">
-                <h3>Asst. Embedded Design Engineer</h3>
-                <h5>CPDM, Indian Institute of Science (November 2023 - June 2024) | <a href = "Kunaal - Experience letter.pdf" target="_blank">View Certificate</a></h5>
-                <p><strong>Role: Lead Firmware Engineer - Project: LifeBox</strong></p>
-                <ul>
-                  <li>Firmware Architecture & Design</li>
-                  <li>Electronics & Mechanical Integration</li>
-                  <li>Digital/Programmable Components Selection</li>
-                  <li>Touch Display GUI Design</li>
-                  <li>Risk Analysis & FMEA</li>
-                </ul>
-                <p><strong>Role: Firmware Engineer - Project: InsuFlo</strong></p>
-                <ul>
-                  <li>Firmware Development</li>
-                </ul>
-              </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="job-header">
+              <h3>Asst. Embedded Design Engineer</h3>
+              <span class="company">CPDM, Indian Institute of Science</span>
+              <span class="date">November 2023 - June 2024</span>
+              <a href="Kunaal - Experience letter.pdf" target="_blank" class="cert-link">View Certificate</a>
+            </div>
+            <div class="job-body">
+              <p><strong>Role: Lead Firmware Engineer - Project: LifeBox</strong></p>
+              <ul>
+                <li>Firmware Architecture & Design</li>
+                <li>Electronics & Mechanical Integration</li>
+                <li>Digital/Programmable Components Selection</li>
+                <li>Touch Display GUI Design</li>
+                <li>Risk Analysis & FMEA</li>
+              </ul>
+              <div class="separator-line"></div>
+              <p><strong>Role: Firmware Engineer - Project: InsuFlo</strong></p>
+              <ul>
+                <li>Firmware Development</li>
+              </ul>
             </div>
           </div>
-          <!-- Job 2 -->
-          <div class="card animate__animated animate__fadeInUp">
-            <div class="card-body">
-              <div class="timeline-item animate__animated animate__fadeInRight">
-                <h3>Graduate Intern - Embedded Design</h3>
-                <h5>CPDM, Indian Institute of Science (August - October 2023) | <a href = "Kunaal - Intership Letter.pdf" target="_blank">View Certificate</a></h5>
-                <p><strong>Project - LifeBox</strong></p>
-                <ul>
-                  <li>Firmware Development</li>
-                  <li>Electronics and Mechanical Integration</li>
-                </ul>
-              </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="job-header">
+              <h3>Graduate Intern - Embedded Design</h3>
+              <span class="company">CPDM, Indian Institute of Science</span>
+              <span class="date">August - October 2023</span>
+              <a href="Kunaal - Intership Letter.pdf" target="_blank" class="cert-link">View Certificate</a>
+            </div>
+            <div class="job-body">
+              <p><strong>Project - LifeBox</strong></p>
+              <ul>
+                <li>Firmware Development</li>
+                <li>Electronics and Mechanical Integration</li>
+              </ul>
             </div>
           </div>
-          <!-- Job 1 -->
-          <div class="card animate__animated animate__fadeInUp">
-            <div class="card-body">
-              <div class="timeline-item animate__animated animate__fadeInLeft">
-                <h3>Intern, R&D - Electronics</h3>
-                <h5>Inverted Energy Pvt. Ltd. (February - July 2023)  | <a href = "Internship Certificate - Kunaal Kiran Kumar.pdf" target="_blank">View Certificate</a></h5>
-                <p><strong>Project - USB to CAN Converter</strong></p>
-                <ul>
-                  <li>Firmware Development</li>
-                  <li>BMS Software Testing</li>
-                </ul>
-              </div>
+        </div>
+
+        <!-- Job 1 -->
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-card">
+            <div class="job-header">
+              <h3>Intern, R&D - Electronics</h3>
+              <span class="company">Inverted Energy Pvt. Ltd.</span>
+              <span class="date">February - July 2023</span>
+              <a href="Internship Certificate - Kunaal Kiran Kumar.pdf" target="_blank" class="cert-link">View
+                Certificate</a>
+            </div>
+            <div class="job-body">
+              <p><strong>Project - USB to CAN Converter</strong></p>
+              <ul>
+                <li>Firmware Development</li>
+                <li>BMS Software Testing</li>
+              </ul>
             </div>
           </div>
-          <!-- Add more older jobs -->
         </div>
       </div>
     </section>
 
     <!-- Education Section -->
     <section id="education" class="section">
-      <div class="container">
-        <h2 class="section-title">Education</h2>
-        <h5>Click <a href = "Education Certificates and Grade Cards.pdf" target="_blank">here</a> to view Education Portfolio</h5>
-        <br>
-        <div class="education-timeline">
-          <!-- Education 1 -->
-          <div class="card1 animate__animated animate__fadeInUp">
-            <div class="card-body1">
-              <div class="education-item animate__animated animate__fadeInLeft">
-                <h4>B.E. Electronics & Computer Science - Engineering</h4>
-                <h5>Chitkara University (2019-2023)</h5>
-                <h5>GPA: 9.52 out of 10.0</h5>
-              </div>
-            </div>
-          </div>
-          <!-- Education 2 -->
-          <div class="card1 animate__animated animate__fadeInUp">
-            <div class="card-body1">
-              <div class="education-item animate__animated animate__fadeInRight">
-                <h4>Senior Secondary (Class 12) - Pre-University</h4>
-                <h5>St. Joseph’s Pre-University College (2017-2019)</h5>
-                <h5>Score: 415 out of 600</h5>
-              </div>
-            </div>
-          </div>
-          <!-- Education 3 -->
-          <div class="card1 animate__animated animate__fadeInUp">
-            <div class="card-body1">
-              <div class="education-item animate__animated animate__fadeInLeft">
-                <h4>Secondary (Class 10) - ICSE</h4>
-                <h5>St. Joseph’s Boys’ High School (2016-2017)</h5>
-                <h5>Score: 500 out of 600</h5>
-              </div>
-            </div>
-          </div>
+      <h2 class="section-heading"><span class="highlight">Ed</span>ucation</h2>
+      <div class="portfolio-link-wrapper reveal-on-scroll">
+        <a href="Education Certificates and Grade Cards.pdf" target="_blank" class="neon-button">View Education
+          Portfolio</a>
+      </div>
+
+      <div class="education-grid">
+        <!-- Edu 1 -->
+        <div class="edu-card glass-card reveal-on-scroll">
+          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h4>B.E. Electronics & Computer Science</h4>
+          <h5>Chitkara University (2019-2023)</h5>
+          <div class="score">GPA: 9.52 / 10.0</div>
+        </div>
+
+        <!-- Edu 2 -->
+        <div class="edu-card glass-card reveal-on-scroll">
+          <div class="edu-icon"><i class="fas fa-university"></i></div>
+          <h4>Senior Secondary (Class 12)</h4>
+          <h5>St. Joseph’s PU College (2017-2019)</h5>
+          <div class="score">Score: 415 / 600</div>
+        </div>
+
+        <!-- Edu 3 -->
+        <div class="edu-card glass-card reveal-on-scroll">
+          <div class="edu-icon"><i class="fas fa-school"></i></div>
+          <h4>Secondary (Class 10) - ICSE</h4>
+          <h5>St. Joseph’s Boys’ High School (2016-2017)</h5>
+          <div class="score">Score: 500 / 600</div>
         </div>
       </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="row">
-          <div class="card col-md-6 animate__animated animate__fadeInLeft">
-            <div class="card-body">
-              <h4>Programming Languages</h4>
-              <ul>
-                <li>C</li>
-                <li>C++</li>
-                <li>Python</li>
-              </ul>
-            </div>
-          </div>
-          <div class="card col-md-6 animate__animated animate__fadeInRight">
-            <div class="card-body">
-              <h4>Hardware Used</h4>
-              <ul>
-                <li>STM32 (HAL)</li>
-                <li>ESP32 (ESP-IDF)</li>
-                <li>Arduino</li>
-                <li>ESP8266 IoT Controller</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="card col-md-6 animate__animated animate__fadeInLeft">
-            <div class="card-body">
-              <h4>Other Skills</h4>
-              <ul>
-                <li>Digital Electronics</li>
-                <li>Communication Protocols</li>
-                <li>FreeRTOS</li>
-                <li>TouchGFX UI Design</li>
-              </ul>
-            </div>
-          </div>
-          <div class="card col-md-6 animate__animated animate__fadeInRight">
-            <div class="card-body">
-              <h4>Additional Skills (Basic)</h4>
-              <ul>
-                <li>Machine Learning</li>
-                <li>Image Processing</li>
-                <li>Software Architecture Design</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section id="skills" class="section">
+      <h2 class="section-heading"><span class="highlight">Sk</span>ills</h2>
+      <div class="skills-grid">
 
-    <!-- Extra-Curriculars Section -->
-    <section id="extracurriculars" class="section">
-      <div class="container">
-        <h2 class="section-title">Extra-Curricular Activities</h2>
-        <ul class="animate__animated animate__fadeInUp">
-          <li>Head organizer of the TecHacks 3.0 student-run hackathon, February 2023</li>
-          <li>President of Institution of Engineers India (IEI), Student Chapter, 2022 - 2023</li>
-          <li>Editor-in-chief of the Editorial Team, Department of Electronics, 2021 - 2022</li>
-          <li>Rajya Puraskar Scout in the Bharat Scouts and Guides (BS&G) Karnataka, 2017</li>
-          <li>Bharat Scouts & Guides - Served as patrol leader of the scout patrol, 2016 - 2017</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- References Section -->
-    <section id="references" class="section bg-light">
-      <div class="container">
-        <h2 class="section-title">References</h2>
-        <div class="row">
-          <div class="card col-md-4">
-            <div class="card-body">
-              <strong>Mr. Alok Mishra</strong><br> Senior Firmware Engineer<br> <a href="mailto:alokm014@gmail.com">alokm014@gmail.com</a>
-            </div>
-          </div>
-          <div class="card col-md-4">
-            <div class="card-body">
-              <strong>Dr. Amit Kumar</strong><br> Assistant Professor, ECE<br> <a href="mailto:amit.kumar@chitkara.edu.in">amit.kumar@chitkara.edu.in</a>
-            </div>
-          </div>
-          <div class="card col-md-4">        
-            <div class="card-body">
-              <strong>Dr. Shivani Malhotra</strong><br> Dean, Department of ECE<br> <a href="mailto:shivani.malhotra@chitkara.edu.in">shivani.malhotra@chitkara.edu.in</a>
-            </div>
+        <div class="skill-category glass-card reveal-on-scroll">
+          <h3><i class="fas fa-code"></i>Software</h3>
+          <div class="tags">
+            <span class="tag">C/C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">Web Development</span>
+            <span class="tag">UI Software Design</span>
           </div>
         </div>
+
+        <div class="skill-category glass-card reveal-on-scroll">
+          <h3><i class="fas fa-microchip"></i>Hardware</h3>
+          <div class="tags">
+            <span class="tag">STM32 (HAL)</span>
+            <span class="tag">ESP32 (ESP-IDF)</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">ESP8266</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card reveal-on-scroll">
+          <h3><i class="fas fa-tools"></i>Expertise</h3>
+          <div class="tags">
+            <span class="tag">Digital Electronics</span>
+            <span class="tag">FreeRTOS</span>
+            <span class="tag">TouchGFX</span>
+            <span class="tag">Software Architecture</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card reveal-on-scroll">
+          <h3><i class="fas fa-brain"></i>Fundamentals</h3>
+          <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Image Processing</span>
+            <span class="tag">PCB Design Process</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="section">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="row">
-          <!-- Project 1 -->
-          <div class="col-md-6 project-item animate__animated animate__fadeInLeft">
-            <div class="card1">
-              <div class="card-body1">
-                <h3 style="color: rgb(155, 86, 219);"><a href = "LifeBox.pdf" target = "_blank">LifeBox - An organ procurement and preservation device</a></h3>
-                <h4><i>2024, IISc Bangalore</i></h4>
-                <p>LifeBox is a medical device that is used to preserve and monitor an out-of-body organ and maintain the vitality of the organ over a significantly higher period of time when compared to all the primitive transportation ice boxes.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="col-md-6 project-item animate__animated animate__fadeInLeft">
-            <div class="card1">
-              <div class="card-body1">
-                <h3 style="color: rgb(155, 86, 219);"><a href = "https://drive.google.com/drive/folders/18HJ3C2psfy_Fu18BboXOYZqn_ilvuAEH?usp=sharing" target = "_blank">USB to CAN Converter - Accessory for Battery Management Systems</a></h3>
-                <h4><i>2023, Inverted Energy Pvt Ltd</i></h4>
-                <p>The USB to CAN Converter is a device used to transmit and receive data between the BMS and the PC User Interface of the same. It is also capable of decoding battery data and logging it in a memory card.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="col-md-6 project-item animate__animated animate__fadeInLeft">
-            <div class="card1">
-              <div class="card-body1">
-                <h3 style="color: rgb(155, 86, 219);"><a href = "https://github.com/Kunaalkk1/gaze_capture.git" target = "_blank">Eye Gaze and Squint Prediction and Machine Learning Algorithm</a></h3>
-                <h4><i>2022, CURIN R&D Project</i></h4>
-                <p>This project of Chitkara University Research & Innovation Network (CURIN) processes video footage in a webserver, where a python algorithm processes the image and generates a dataset. This dataset is used to detect squint using ML.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Project 4 -->
-          <div class="col-md-6 project-item animate__animated animate__fadeInLeft">
-            <div class="card1">
-              <div class="card-body1">
-                <h3 style="color: rgb(155, 86, 219);"><a href = "https://drive.google.com/file/d/1hoM5McW8R7uPYevgyaD9AEyPUGptgqIK/view?usp=sharing" target = "_blank">Multi-controller communication (ESP-NOW) to control traffic lights</a></h3>
-                <h4><i>2021, Smart Indian Hackathon</i></h4>
-                <p>This project was a finalist (Top 5) in Smart India Hackathon 2022, uses a secure and encrypted Wi-Fi protocol on ESP32 to transmit data and gives control of the flow of traffic of any signal to the assigned police officer.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Project 5 -->
-          <div class="col-md-6 project-item animate__animated animate__fadeInLeft">
-            <div class="card1">
-              <div class="card-body1">
-                <h3 style="color: rgb(155, 86, 219);"><a href = "https://github.com/Kunaalkk1/medrush-staff-portal.git" target = "_blank">Web-based Hospital Automation System on Google Firebase</a></h3>
-                <h4><i>2020, B.E. Engineering Project</i></h4> 
-                <p>This is a web portal that connects an entire hospital to a database, monitors every room and patient using sensors connected to ESP8266 and also manages - doctors, schedules and appointments, emergency alarms and notifications.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Project 6 -->
-          <div class="col-md-6 project-item animate__animated animate__fadeInLeft">
-            <div class="card1">
-              <div class="card-body1">
-                <h3 style="color: rgb(155, 86, 219);"><a href = "https://github.com/Kunaalkk1/smart-farm.git" target = "_blank">IoT-based Smart Farming System on Google Firebase</a></h3>
-                <h4><i>2020, B.E. Engineering Project</i></h4>
-                <p>This project can provide a farmer access to the farm weather and soil conditions monitored on ESP32 and provides a web-dashboard hosted on Google Firebase, and also controls the motors for the irrigation system.</p>
-              </div>
-            </div>
-          </div>
+      <h2 class="section-heading"><span class="highlight">Pr</span>ojects</h2>
+      <div class="projects-grid">
 
+        <!-- Project 1 -->
+        <div class="project-card glass-card tilt-element reveal-on-scroll">
+          <h3>LifeBox</h3>
+          <p class="subtitle">An organ procurement and preservation device</p>
+          <span class="project-year">2024, IISc Bangalore</span>
+          <p class="project-desc">LifeBox is a medical device that is used to preserve and monitor an out-of-body organ
+            and maintain the vitality of the organ over a significantly higher period of time when compared to all the
+            primitive transportation ice boxes.</p>
+          <a href="LifeBox.pdf" target="_blank" class="project-link">View Project <i
+              class="fas fa-external-link-alt"></i></a>
         </div>
+
+        <!-- Project 2 -->
+        <div class="project-card glass-card tilt-element reveal-on-scroll">
+          <h3>USB to CAN Converter</h3>
+          <p class="subtitle">Accessory for Battery Management Systems</p>
+          <span class="project-year">2023, Inverted Energy Pvt Ltd</span>
+          <p class="project-desc">The USB to CAN Converter is a device used to transmit and receive data between the BMS
+            and the PC User Interface of the same. It is also capable of decoding battery data and logging it in a
+            memory card.</p>
+          <a href="https://drive.google.com/drive/folders/18HJ3C2psfy_Fu18BboXOYZqn_ilvuAEH?usp=sharing" target="_blank"
+            class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card glass-card tilt-element reveal-on-scroll">
+          <h3>Eye Gaze & Squint Prediction</h3>
+          <p class="subtitle">Machine Learning Algorithm</p>
+          <span class="project-year">2022, CURIN R&D Project</span>
+          <p class="project-desc">This project of Chitkara University Research & Innovation Network (CURIN) processes
+            video footage in a webserver, where a python algorithm processes the image and generates a dataset. This
+            dataset is used to detect squint using ML.</p>
+          <a href="https://github.com/Kunaalkk1/gaze_capture.git" target="_blank" class="project-link">View Project <i
+              class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card glass-card tilt-element reveal-on-scroll">
+          <h3>Traffic Control (ESP-NOW)</h3>
+          <p class="subtitle">Multi-controller communication</p>
+          <span class="project-year">2021, Smart Indian Hackathon</span>
+          <p class="project-desc">This project was a finalist (Top 5) in Smart India Hackathon 2022, uses a secure and
+            encrypted Wi-Fi protocol on ESP32 to transmit data and gives control of the flow of traffic of any signal to
+            the assigned police officer.</p>
+          <a href="https://drive.google.com/file/d/1hoM5McW8R7uPYevgyaD9AEyPUGptgqIK/view?usp=sharing" target="_blank"
+            class="project-link">View Project <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card glass-card tilt-element reveal-on-scroll">
+          <h3>Hospital Automation System</h3>
+          <p class="subtitle">Web-based Google Firebase System</p>
+          <span class="project-year">2020, B.E. Engineering Project</span>
+          <p class="project-desc">This is a web portal that connects an entire hospital to a database, monitors every
+            room and patient using sensors connected to ESP8266 and also manages - doctors, schedules and appointments,
+            emergency alarms and notifications.</p>
+          <a href="https://github.com/Kunaalkk1/medrush-staff-portal.git" target="_blank" class="project-link">View
+            Project <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card glass-card tilt-element reveal-on-scroll">
+          <h3>Smart Farming System</h3>
+          <p class="subtitle">IoT-based System on Google Firebase</p>
+          <span class="project-year">2020, B.E. Engineering Project</span>
+          <p class="project-desc">This project can provide a farmer access to the farm weather and soil conditions
+            monitored on ESP32 and provides a web-dashboard hosted on Google Firebase, and also controls the motors for
+            the irrigation system.</p>
+          <a href="https://github.com/Kunaalkk1/smart-farm.git" target="_blank" class="project-link">View Project <i
+              class="fas fa-external-link-alt"></i></a>
+        </div>
+
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer bg-dark text-white">
-      <div class="container text-center">
-        <p>&copy; 2024, Portfolio of Kunaal Kiran Kumar. All Rights Reserved.</p>
+    <!-- Extra-Curriculars Section -->
+    <section id="extracurriculars" class="section">
+      <h2 class="section-heading"><span class="highlight">Ac</span>tivities</h2>
+      <div class="activities-list glass-card reveal-on-scroll">
+        <ul>
+          <li class="tag"><i class="fas fa-star"></i> <span>Head organizer of the <strong>TecHacks 3.0</strong>
+              student-run
+              hackathon, February 2023</span></li>
+          <li class="tag"><i class="fas fa-crown"></i> <span>President of <strong>Institution of Engineers India
+                (IEI)</strong>,
+              Student Chapter, 2022 - 2023</span></li>
+          <li class="tag"><i class="fas fa-pen-nib"></i> <span>Editor-in-chief of the <strong>Editorial Team</strong>,
+              Department of
+              Electronics, 2021 - 2022</span></li>
+          <li class="tag"><i class="fas fa-campground"></i> <span><strong>Rajya Puraskar Scout</strong> in the Bharat
+              Scouts and
+              Guides (BS&G) Karnataka, 2017</span></li>
+          <li class="tag"><i class="fas fa-flag"></i> <span>Bharat Scouts & Guides - Served as <strong>patrol
+                leader</strong> of the
+              scout patrol, 2016 - 2017</span></li>
+        </ul>
       </div>
-    </footer>
+    </section>
 
-  </div>
-  </section>
+    <!-- References Section -->
+    <section id="references" class="section">
+      <h2 class="section-heading"><span class="highlight">Re</span>ferences</h2>
+      <div class="references-grid">
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="ref-card glass-card reveal-on-scroll">
+          <h4>Mr. Alok Mishra</h4>
+          <p>Senior Firmware Engineer</p>
+          <a href="mailto:alokm014@gmail.com" class="email-link">alokm014@gmail.com</a>
+        </div>
+
+        <div class="ref-card glass-card reveal-on-scroll">
+          <h4>Dr. Amit Kumar</h4>
+          <p>Assistant Professor, ECE</p>
+          <a href="mailto:amit.kumar@chitkara.edu.in" class="email-link">amit.kumar@chitkara.edu.in</a>
+        </div>
+
+        <div class="ref-card glass-card reveal-on-scroll">
+          <h4>Dr. Shivani Malhotra</h4>
+          <p>Dean, Department of ECE</p>
+          <a href="mailto:shivani.malhotra@chitkara.edu.in" class="email-link">shivani.malhotra@chitkara.edu.in</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container text-center">
+      <p>&copy; 2024, Portfolio of Kunaal Kiran Kumar. All Rights Reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/kunaal-kiran-kumar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Kunaalkk1" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:kunaalkk1@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
   <script src="scripts.js"></script>
 </body>
+
 </html>
